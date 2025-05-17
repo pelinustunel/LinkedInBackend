@@ -19,12 +19,9 @@ COPY ./app /app
 # Sertifika dosyalarının bulunacağı klasörü oluştur
 RUN mkdir -p /app/certs
 
-# 📌 Sertifika dosyalarını Docker image içine kopyala (senin projenin dışına göre ayarla)
-COPY app/certs/cert.pem /app/certs/cert.pem
-COPY app/certs/key.pem /app/certs/key.pem
 
-# Flask uygulaması 5003 portunda çalışacak
-EXPOSE 5003
+# Flask uygulaması 5000 portunda çalışacak
+EXPOSE 5000
 
 # Gunicorn ile SSL destekli başlat
-CMD ["gunicorn", "--bind", "0.0.0.0:5003", "--certfile", "/app/certs/cert.pem", "--keyfile", "/app/certs/key.pem", "wsgi:app"]
+CMD ["gunicorn", "--bind", "0.0.0.0:5000", "wsgi:app"]

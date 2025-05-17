@@ -36,7 +36,7 @@ def create_app():
     # Ana route
     @app.route('/')
     def hello():
-        return "Merhaba, SSL ile çalışan Flask uygulaması!"
+        return "Merhaba, Nginx + Gunicorn ile çalışan Flask uygulaması!"
 
     @app.route('/lorem', methods=['POST'])
     def lorem():
@@ -49,12 +49,3 @@ def create_app():
         return send_from_directory('images', filename)
 
     return app
-
-# Ana giriş noktası (SSL ile çalıştır)
-if __name__ == "__main__":
-    app = create_app()
-    app.run(
-        host='0.0.0.0',
-        port=5003,
-        ssl_context=('/app/cert.pem', '/app/key.pem')  # 📌 Docker içindeki yol
-    )
