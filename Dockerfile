@@ -16,9 +16,6 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Uygulama dosyalarını kopyala
 COPY ./app /app
 
-# Sertifika dosyalarının bulunacağı klasörü oluştur
-RUN mkdir -p /app/certs
-
 
 # Flask uygulaması 5000 portunda çalışacak
 EXPOSE 5000
